@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:fanyi"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="翻译╮(╯▽╰)╭班上外语大佬太多没办法"  MinHeight="300" MinWidth="300" Height="300" Width="300" >
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text=" 翻译使用的是百度翻译api，有字数限制" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="1" >
+            <Grid.RowDefinitions >
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <TextBox  Name="textbox1" Grid.Row="0" />
+            <StackPanel Orientation="Horizontal" Grid.Row="1"  >
+                <TextBlock Text="从" Margin="2"  VerticalAlignment="Center"/>
+                <ComboBox Margin="2"  x:Name="comboBox" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="74">
+                    <ComboBoxItem Content="英语" />
+                    <ComboBoxItem Content="日语"/>
+                </ComboBox>
+                <TextBlock  Text="到" Margin="2"  VerticalAlignment="Center"/>
+
+                <ComboBox Margin="2"  x:Name="comboBox2" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="74">
+                    <ComboBoxItem Content="英语" />
+                    <ComboBoxItem Content="日语"/>
+                </ComboBox>
+                <Button Name="fanyibutton" Content=" 翻译(ˉ▽￣～) " Margin="2" />
+            </StackPanel>
+
+        </Grid>
+        <TextBox Name="textbox2" Grid.Row="2" />
+        <StackPanel Orientation="Horizontal"  Grid.Row="3" >
+            <TextBlock Text="剩余可用字数：" />
+            <TextBlock Name="shengyvtext" />
+        </StackPanel>
     </Grid>
 </Window>
