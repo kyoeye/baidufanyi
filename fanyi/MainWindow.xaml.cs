@@ -56,12 +56,14 @@ namespace fanyi
             {
                 builder.Append(py[i].ToString("x2"));
             }
+            haxitext.Text = "当前哈希值："+builder.ToString ();
             return builder.ToString();
         }
 
         private void fanyibutton_Click(object sender, RoutedEventArgs e)
         {
-             
+            src = textbox1.Text;
+            getmd(src);
         }
         //public enum from //语言枚举
         //{
