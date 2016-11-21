@@ -30,6 +30,10 @@ namespace fanyi
         public MainWindow()
         {
             InitializeComponent();
+           listclass comboxclass = new fanyi.listclass();
+            this.DataContext = comboxclass;
+            //string c=  getmd("good");
+            //haxitext.Text = "当前哈希值：";
         }
         //http://api.fanyi.baidu.com/api/trans/vip/translate
 
@@ -41,17 +45,53 @@ namespace fanyi
             salt = r.ToString();
             return salt;          
         }
-        public void getmd( string q)//q是需要翻译的文本，带参方法
+        public string getmd( string q)//q是需要翻译的文本，带参方法
         {
            
             string mds = appid +q+getrandom()+key;//马丹百度搞MD5加密作肾啊
-            byte[] py = getmd5.ComputeHash(Encoding.UTF8.GetBytes(mds)); // 将输入字符串转换为字节数组并计算哈希数据 
+            byte[] py = getmd5.ComputeHash(Encoding.UTF8.GetBytes(mds)); // 将输入字符串转换为字节数组并计算哈希数据 
+
+            StringBuilder builder = new StringBuilder();
+            for (int i =0;i < py.Length;i++)
+            {
+                builder.Append(py[i].ToString("x2"));
+            }
+            return builder.ToString();
         }
-        public enum from //语言枚举
+
+        private void fanyibutton_Click(object sender, RoutedEventArgs e)
         {
-            zh, //中
-            en, // 英
-            jp, //日
+             
         }
+        //public enum from //语言枚举
+        //{
+        //    zh, //中
+        //    en, // 英
+        //    jp, //日
+        //}
+
+        //下拉框
+
+
+
+    }
+    public class listclass
+    {
+        public List<class1> combox { get; set; }
+
+        public listclass()
+        {
+            combox = new List<fanyi.class1>();
+            combox.Add(new class1 { comboxitem = "中文", _from = "zh" });
+            combox.Add(new class1 { comboxitem = "英文", _from = "en" });
+            combox.Add(new class1 { comboxitem = "日语", _from = "jp" });
+
+        }
+    }
+    public class class1
+    {
+        public string comboxitem { get; set; }
+        
+        public string _from { get; set; }//存储来源
     }
 }
